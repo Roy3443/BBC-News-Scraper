@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBC News Scrapper</title>
+    <link />
+</head>
+<body>
+    <h1>BBC News Scrapper</h1>
+    <h2>Live Headlines</h2>
+    <h3>News</h3>
+    <ul>
+        {% for headline in news_headlines %}
+            <li>{{headline}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
