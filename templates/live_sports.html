@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Sports</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}"/>
+</head>
+<body>
+    <h1>BBC News Scrapper</h1>
+    <h1>Live Sports</h1>
+    <div class="container">
+        <a href="{{url_for('live_news')}}">View Live News</a>
+        <a href="{{url_for('live_sports')}}">View Live Sports</a>
+    </div>
+    <ul class="headlines">
+        {% for headline in headlines %}
+            <li>{{headline}}</li>
+        {% endfor %}
+    </ul>
+    <div class="container">
+        <a href="{{url_for('home')}}">Home</a>
+    </div>
+</body>
+</html>
