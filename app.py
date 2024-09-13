@@ -24,7 +24,7 @@ def live_news():
 
 @app.route('/live_sports')
 def live_sports():
-    headlines = get_headlines('live/sports')
+    headlines = get_headlines('live/sport')
     return render_template('live_sports.html', headlines=headlines)
 
 if __name__ == '__main__':
