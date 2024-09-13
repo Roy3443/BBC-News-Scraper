@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BBC News Scrapper</title>
-    <link />
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}"/>
 </head>
 <body>
     <h1>BBC News Scrapper</h1>
     <h2>Live Headlines</h2>
+    <div class="container">
+        <a href="{{url_for('live_news')}}">View Live News</a>
+        <a href="{{url_for('live_sports')}}">View Live Sports</a>
+    </div>
     <h3>News</h3>
-    <ul>
+    <ul class="headlines">
         {% for headline in news_headlines %}
             <li>{{headline}}</li>
         {% endfor %}
