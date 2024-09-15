@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request
 import requests
+import sqlite3
 
 app = Flask(__name__)
 
@@ -11,6 +12,15 @@ def get_headlines(category):
     headlines = soup.find_all(name='h2', class_="sc-9ea79d00-16 jhCgGk")
     return [headline.getText() for headline in headlines]
 
+def init_db():
+    with sqlite3.connect('news.db') as conn:
+        c = conn.cursor()
+        c.execute('''CREATE TABLE IF NOT EXISTS headlines 
+                     (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                      title TEXT, 
+                      category TEXT, 
+                      timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)''')
+        conn.commit()
 
 @app.route('/', methods = ['GET'])
 def home():
