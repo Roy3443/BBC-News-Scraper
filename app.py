@@ -22,6 +22,14 @@ def init_db():
                       timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)''')
         conn.commit()
 
+def store_headlines(headlines, category):
+    with sqlite3.connect('news.db') as conn:
+        c = conn.cursor()
+        for headline in headlines:
+            c.execute("INSERT INTO headlines (title, category) VALUES (?, ?)", (headline, category))
+
+        conn.commit()
+
 @app.route('/', methods = ['GET'])
 def home():
     news_headlines = get_headlines('live')
@@ -38,4 +46,5 @@ def live_sports():
     return render_template('live_sports.html', headlines=headlines)
 
 if __name__ == '__main__':
+    init_db()
     app.run(debug=True)
