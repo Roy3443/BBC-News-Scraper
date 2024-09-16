@@ -33,16 +33,19 @@ def store_headlines(headlines, category):
 @app.route('/', methods = ['GET'])
 def home():
     news_headlines = get_headlines('live')
+    store_headlines(news_headlines, 'news')
     return render_template('index.html', news_headlines =news_headlines)
 
 @app.route('/live_news', methods=['GET'])
 def live_news():
     headlines = get_headlines('live/news')
+    store_headlines(headlines, 'live-news')
     return render_template('live_news.html', headlines=headlines)
 
 @app.route('/live_sports')
 def live_sports():
     headlines = get_headlines('live/sport')
+    store_headlines(headlines, 'live-sports')
     return render_template('live_sports.html', headlines=headlines)
 
 if __name__ == '__main__':
